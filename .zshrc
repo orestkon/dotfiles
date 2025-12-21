@@ -3,7 +3,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Here add necessary tools to the PATH
 PATH="${PATH}"
-
+export EDITOR="/opt/homebrew/bin/nvim"
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -67,4 +67,4 @@ alias c='clear'
 
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
