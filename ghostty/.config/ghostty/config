@@ -1,0 +1,29 @@
+theme = gruvbox-dark
+font-size = 16
+window-decoration = "none"
+mouse-hide-while-typing = true
+
+# --- macOS Appearance ---
+# Eliminates the top bar entirely.
+# Note: This disables native tab dragging; use shortcuts for tabs.
+macos-titlebar-style = "hidden"
+
+# --- Transparency & Blur ---
+# Set between 0.0 (clear) and 1.0 (opaque)
+background-opacity = "0.75"
+# Adds a macOS-style frosted glass effect (0-100)
+background-blur-radius = "20"
+
+# --- Window Spacing ---
+# Adds breathing room so text doesn't touch the window edges
+window-padding-x = "12"
+window-padding-y = "12"
+window-padding-color = "extend"
+
+# --- Recommended macOS Essentials ---
+# Allows you to use the Option key for navigation (e.g., Alt+B/Alt+F)
+macos-option-as-alt = "left"
+# Keeps the terminal running in the dock even if all windows are closed
+quit-after-last-window-closed = false
+
+
