@@ -1,4 +1,4 @@
-theme = gruvbox-dark
+theme = Gruvbox Material Dark
 font-size = 16
 window-decoration = "none"
 mouse-hide-while-typing = true
@@ -10,7 +10,7 @@ macos-titlebar-style = "hidden"
 
 # --- Transparency & Blur ---
 # Set between 0.0 (clear) and 1.0 (opaque)
-background-opacity = "0.75"
+background-opacity = "0.90"
 # Adds a macOS-style frosted glass effect (0-100)
 background-blur-radius = "20"
 
@@ -26,4 +26,4 @@ macos-option-as-alt = "left"
 # Keeps the terminal running in the dock even if all windows are closed
 quit-after-last-window-closed = false
 
-
+command = /bin/zsh

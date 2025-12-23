@@ -3,7 +3,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Here add necessary tools to the PATH
 PATH="${PATH}"
-export EDITOR="/opt/homebrew/bin/nvim"
+
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -61,10 +61,21 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
 
+# General replacement
+alias ls='eza --icons=always'
+
+# Detailed list (The "Gold Standard" eza view)
+alias ll='eza -lh --icons=always --grid --group-directories-first --git'
+
+# All files including hidden
+alias la='eza -a --icons=always'
+
+# Tree view (replaces the 'tree' command)
+alias lt='eza --tree --icons=always'
+
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
