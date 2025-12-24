@@ -1,6 +1,9 @@
 # MacOS -- Homebrew installed apps available to PATH
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Export default configurations
+export EDITOR="/opt/homebrew/bin/nvim"
+
 # Here add necessary tools to the PATH
 PATH="${PATH}"
 
@@ -79,3 +82,5 @@ alias lt='eza --tree --icons=always'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+neofetch
