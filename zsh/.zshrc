@@ -68,19 +68,77 @@ alias vim='nvim'
 alias c='clear'
 
 # General replacement
-alias ls='eza --icons=always'
+alias ls='eza --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions'
 
 # Detailed list (The "Gold Standard" eza view)
 alias ll='eza -lh --icons=always --grid --group-directories-first --git'
 
 # All files including hidden
-alias la='eza -a --icons=always'
+alias la='eza -a --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions'
 
 # Tree view (replaces the 'tree' command)
-alias lt='eza --tree --icons=always'
+alias lt='eza -a --tree --level=2 --icons=always'
 
-# Shell integrations
+## Shell integrations
+
+# Setup fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
+
+# -- Use fd instead of find --
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal.
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+	fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion.
+_fzf_compgen_dir() {
+	fd --type=d --hidden --exclude .git . "$1"
+}
+
+# NOTE: Find a better place for this repo
+source ~/fzf-git.sh/fzf-git.sh
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
+
+# -- Zoxide --
 eval "$(zoxide init --cmd cd zsh)"
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+export BAT_THEME=gruvbox-dark
+
+# -- The fuck --
+eval $(thefuck --alias)
 
 neofetch

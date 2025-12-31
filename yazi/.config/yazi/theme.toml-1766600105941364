@@ -1,0 +1,59 @@
+# ==============================================================================
+# GRUVBOX MASTER PALETTE (For easy reference)
+# ------------------------------------------------------------------------------
+# Background: #282828 | Foreground: #ebdbb2
+# Red:    #fb4934 | Green: #b8bb26 | Yellow: #fabd2f | Blue: #83a598
+# Purple: #d3869b | Aqua:  #8ec07c | Orange: #fe8019 | Gray: #928374
+# Washed Blue (Neutral): #458588  | Washed Orange (Neutral): #d65d0e
+# ==============================================================================
+
+[flavor]
+use   = "gruvbox-dark"
+dark  = "gruvbox-dark"
+light = "gruvbox-dark"
+
+[manager]
+# --- Navigation ---
+cwd = { fg = "#8ec07c" } # Current Working Directory (Aqua)
+
+# --- The Cursor ---
+# Using Yellow (#d8a657) for the main cursor
+hovered         = { fg = "#282828", bg = "#d8a657", bold = true }
+preview_hovered = { underline = true }
+
+# --- Selection Mode ---
+# Using Green (#a9b665) for multi-select
+selection       = { fg = "#282828", bg = "#a9b665" }
+
+# --- Default Text ---
+# This fixes the "boring white" for unmatched files
+default = { fg = "#ebdbb2" }
+
+[filetype]
+rules = [
+    # 1. DIRECTORIES (Your "Washed Blue" Choice)
+    { name = "*/", fg = "#458588", bold = true },
+
+    # 2. CONFIGURATION & SCRIPTS (The "Pop" colors)
+    { name = "*.lua", fg = "#fabd2f" }, # Yellow (Your Lua files)
+    { name = "*.toml", fg = "#fe8019" }, # Orange (Your Yazi/Starship configs)
+    { name = "*.json", fg = "#fe8019" },
+    { name = "*.sh",   fg = "#b8bb26" }, # Green (Shell scripts)
+    { name = "*.zsh",  fg = "#b8bb26" },
+
+    # 3. CODING LANGUAGES
+    { name = "*.py",   fg = "#b8bb26" }, # Green
+    { name = "*.js",   fg = "#fabd2f" }, # Yellow
+    { name = "*.rs",   fg = "#fe8019" }, # Orange (Rust)
+
+    # 4. MEDIA & DOCUMENTS
+    { mime = "image/*", fg = "#d3869b" }, # Purple
+    { mime = "video/*", fg = "#d3869b" },
+    { name = "*.md",    fg = "#a89984" }, # Muted Gray/Cream for docs
+    { name = "*.pdf",   fg = "#fb4934" }, # Red
+
+    # 5. BUILD & SYSTEM
+    { name = "Makefile",  fg = "#fb4934" },
+    { name = ".gitignore", fg = "#928374" }, # Subtle Gray
+    { name = ".git/",      fg = "#fb4934" },
+]

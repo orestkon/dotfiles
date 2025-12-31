@@ -1,0 +1,8 @@
+[opener]
+edit = [
+	{ run = '${EDITOR:-vi} "$@"', block = true, for = "unix" },
+]
+
+[preview]
+# Ghostty supports 'kitty', which is much better than 'ueberzug' or 'iterm2'
+image_preview_method = "kitty"
