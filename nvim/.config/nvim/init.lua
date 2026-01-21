@@ -64,6 +64,10 @@ vim.o.splitbelow = true
 --   and `:help lua-options-guide`
 vim.o.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.tabstop = 2 -- Number of spaces a <Tab> counts for
+vim.opt.softtabstop = 2 -- Number of spaces a <Tab> counts for while editing
+vim.opt.shiftwidth = 2 -- Size of an indent
+vim.opt.expandtab = true -- Turn tabs into spaces
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = "split"
