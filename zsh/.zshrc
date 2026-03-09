@@ -68,7 +68,7 @@ alias vim='nvim'
 alias v='nvim .'
 alias c='clear'
 
-alias opencode='opencode --agent=plan'
+alias opencode='opencode --agent=plan --continue'
 
 # General replacement
 alias ls='eza --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions'
