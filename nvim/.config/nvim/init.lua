@@ -894,6 +894,8 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"typescript",
+				"jsdoc",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
@@ -906,6 +908,16 @@ require("lazy").setup({
 			},
 			indent = { enable = true, disable = { "ruby" } },
 		},
+		config = function(_, opts)
+			-- SAFE CHECK: Try the old way, but fallback to the new way
+			local ok, configs = pcall(require, "nvim-treesitter.configs")
+			if ok then
+				configs.setup(opts)
+			else
+				-- This is the fix for the v1.0.0+ error you're seeing
+				require("nvim-treesitter").setup(opts)
+			end
+		end,
 		-- There are additional nvim-treesitter modules that you can use to interact
 		-- with nvim-treesitter. You should go explore a few and see what interests you:
 		--

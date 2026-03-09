@@ -65,7 +65,10 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias vim='nvim'
+alias v='nvim .'
 alias c='clear'
+
+alias opencode='opencode --agent=plan'
 
 # General replacement
 alias ls='eza --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions'
