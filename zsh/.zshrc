@@ -1,11 +1,24 @@
 # MacOS -- Homebrew installed apps available to PATH
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Export default configurations
-export EDITOR="/opt/homebrew/bin/nvim"
+# 1. Smart Path Management (Unique array prevents duplicates)
+typeset -U path
+export BUN_INSTALL="$HOME/.bun"
 
-# Here add necessary tools to the PATH
-PATH="${PATH}"
+# 2. Add your custom folders to the path array
+# (Note: lower-case 'path' is a zsh array linked to upper-case 'PATH')
+path=(
+  "$BUN_INSTALL/bin"
+  "$HOME/bin"
+  $path
+)
+
+# --- BUN COMPLETIONS ---
+# This keeps your 'bun' commands tab-completable
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
+# Export default configurations
+export EDITOR="nvim"
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -153,7 +166,3 @@ neofetch
 
 # bun completions
 [ -s "/Users/orestkon/.bun/_bun" ] && source "/Users/orestkon/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
