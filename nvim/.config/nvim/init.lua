@@ -62,12 +62,14 @@ vim.o.splitbelow = true
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
-vim.o.list = true
+vim.o.list = false
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
 vim.opt.tabstop = 2 -- Number of spaces a <Tab> counts for
 vim.opt.softtabstop = 2 -- Number of spaces a <Tab> counts for while editing
 vim.opt.shiftwidth = 2 -- Size of an indent
 vim.opt.expandtab = true -- Turn tabs into spaces
+vim.opt.fixeol = true -- Ensures file ends with a newline
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = "split"
@@ -133,6 +135,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
 		vim.hl.on_yank()
+	end,
+})
+
+-- Trim trailing whitespace on save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = { "*" },
+	callback = function()
+		local save_cursor = vim.fn.getpos(".")
+		vim.cmd([[%s/\s\+$//e]])
+		vim.fn.setpos(".", save_cursor)
 	end,
 })
 
@@ -547,10 +559,35 @@ require("lazy").setup({
 						client
 						and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
 					then
+						vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
 						map("<leader>th", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
 					end
+
+					-- Organize Imports on Save
+					-- We create a small autocmd that only lives as long as this LSP is attached
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = event.buf,
+						callback = function()
+							-- Only run for TypeScript/JavaScript
+							local ft = vim.bo[event.buf].filetype
+							if
+								ft == "typescript"
+								or ft == "typescriptreact"
+								or ft == "javascript"
+								or ft == "javascriptreact"
+							then
+								vim.lsp.buf.code_action({
+									context = {
+										only = { "source.organizeImports" },
+										diagnostics = {},
+									},
+									apply = true,
+								})
+							end
+						end,
+					})
 				end,
 			})
 
@@ -701,6 +738,15 @@ require("lazy").setup({
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				-- javascript = { "prettierd", "prettier", stop_after_first = true },
+				typescript = { "prettier" },
+				javascript = { "prettier" },
+				typescriptreact = { "prettier" },
+				javascriptreact = { "prettier" },
+			},
+			formatters = {
+				prettier = {
+					prepend_args = { "--no-semi", "--single-quote", "--trailing-comma", "all" },
+				},
 			},
 		},
 	},
