@@ -428,7 +428,7 @@ require("lazy").setup({
 			"saghen/blink.cmp",
 		},
 		config = function()
-			vim.lsp.config('ts_ls', {
+			vim.lsp.config("ts_ls", {
 				settings = {
 					typescript = {
 						inlayHints = {
