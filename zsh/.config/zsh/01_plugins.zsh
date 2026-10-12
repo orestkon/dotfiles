@@ -20,10 +20,6 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
-# Oh My Zsh Git library snippet
-zinit snippet OMZP::git
-
-
 # ==============================================================================
 # COMPLETION SYSTEM INITIALIZATION
 # ==============================================================================

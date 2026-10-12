@@ -10,3 +10,5 @@ if [ -d "$ZSH_CONFIG_DIR" ]; then
     source "$file"
   done
 fi
+
+fastfetch --logo-type kitty

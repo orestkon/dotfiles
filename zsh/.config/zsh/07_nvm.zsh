@@ -7,9 +7,9 @@ lazy_nvm() {
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
 
-nvm() { lazy_nvm; nvm "$@"; }
+nvm()  { lazy_nvm; nvm "$@"; }
 node() { lazy_nvm; node "$@"; }
-npm() { lazy_nvm; npm "$@"; }
-npx() { lazy_nvm; npx "$@"; }
+npm()  { lazy_nvm; npm "$@"; }
+npx()  { lazy_nvm; npx "$@"; }
 yarn() { lazy_nvm; yarn "$@"; }
 pnpm() { lazy_nvm; pnpm "$@"; }

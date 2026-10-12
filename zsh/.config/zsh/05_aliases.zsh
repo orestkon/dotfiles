@@ -5,17 +5,36 @@ alias vim='nvim'
 alias v='nvim .'
 alias c='clear'
 
+# Fast directory navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Safety prompts for destructive operations
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
 
 # ==============================================================================
-# AI AGENTS
+# EZA ALIASES (MODERN LS)
+# ==============================================================================
+# Clean single column list (Icons + Git status only)
+alias ls='eza --long --color=always --icons=always --git --group-directories-first --no-filesize --no-time --no-user --no-permissions'
+
+# Detailed single column list (Filesizes, modified dates, permissions)
+alias ll='eza -lh --color=always --icons=always --git --group-directories-first'
+
+# Clean single column list including hidden files
+alias la='eza -a --long --color=always --icons=always --git --group-directories-first --no-filesize --no-time --no-user --no-permissions'
+
+# Tree views (Depth level 2 and 3)
+alias lt='eza -a --tree --level=2 --icons=always'
+alias lt3='eza -a --tree --level=3 --icons=always'
+
+
+# ==============================================================================
+# AI AGENTS & CLI TOOLS
 # ==============================================================================
 alias opencode='opencode --agent=plan --continue'
-
-
-# ==============================================================================
-# EZA ALIASES
-# ==============================================================================
-alias ls='eza --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions'
-alias ll='eza -lh --icons=always --grid --group-directories-first --git'
-alias la='eza -a --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions'
-alias lt='eza -a --tree --level=2 --icons=always'
+alias cat='bat'
