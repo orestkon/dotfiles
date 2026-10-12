@@ -1,4 +1,4 @@
-theme = Gruvbox Material Dark
+theme = Catppuccin Macchiato
 font-size = 16
 window-decoration = false
 maximize = true
@@ -11,7 +11,7 @@ macos-titlebar-style = "hidden"
 
 # --- Transparency & Blur ---
 # Set between 0.0 (clear) and 1.0 (opaque)
-background-opacity = "0.90"
+background-opacity = "0.80"
 # Adds a macOS-style frosted glass effect (0-100)
 background-blur-radius = "20"
 
@@ -26,5 +26,11 @@ window-padding-color = "extend"
 macos-option-as-alt = "left"
 # Keeps the terminal running in the dock even if all windows are closed
 quit-after-last-window-closed = false
+
+# --- Ghostty shaders ---
+# Adds a decorative shader (with animations)
+# custom-shader = shaders/starfield-colors.glsl
+# custom-shader = shaders/matrix-hallway.glsl
+# custom-shader-animation = true
 
 command = /bin/zsh
