@@ -1,0 +1,31 @@
+# ==============================================================================
+# ZINIT PLUGIN MANAGER INITIALIZATION
+# ==============================================================================
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+if [ ! -d "${ZINIT_HOME}" ]; then
+	mkdir -p "$(dirname ${ZINIT_HOME})"
+	git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}"
+fi
+
+source "${ZINIT_HOME}/zinit.zsh"
+
+
+# ==============================================================================
+# ZSH PLUGINS & SNIPPETS
+# ==============================================================================
+# Fast syntax highlighting, completions, and auto-suggestions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Oh My Zsh Git library snippet
+zinit snippet OMZP::git
+
+
+# ==============================================================================
+# COMPLETION SYSTEM INITIALIZATION
+# ==============================================================================
+autoload -U compinit && compinit
+zinit cdreplay -q
