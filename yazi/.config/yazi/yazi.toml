@@ -1,8 +1,17 @@
+[mgr]
+ratio = [2, 3, 6]
+
 [opener]
 edit = [
-	{ run = '${EDITOR:-vi} "$@"', block = true, for = "unix" },
+    { run = '${EDITOR} "%s"', desc = "Edit", block = true, for = "unix" },
+]
+
+[open]
+rules = [
+    { url = "*/", use = [ "edit", "open" ] },
+    { mime = "text/*", use = [ "edit", "reveal" ] },
+    { mime = "*", use = [ "open", "reveal" ] },
 ]
 
 [preview]
-# Ghostty supports 'kitty', which is much better than 'ueberzug' or 'iterm2'
 image_preview_method = "kitty"
