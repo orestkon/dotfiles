@@ -9,6 +9,10 @@ edit = [
 [open]
 rules = [
     { url = "*/", use = [ "edit", "open" ] },
+    # Match hidden dotfiles (e.g. .config, .zshrc, .env)
+    { url = ".*", use = [ "edit", "reveal" ] },
+    # Match common extensionless or special config files
+    { url = "config", use = [ "edit", "reveal" ] },
     { url = "*.jsonc", use = [ "edit", "reveal" ] },
     { url = ".env*", use = [ "edit", "reveal" ] },
     { url = "*.lock", use = [ "edit", "reveal" ] },
