@@ -3,22 +3,35 @@ ratio = [2, 3, 6]
 
 [opener]
 edit = [
-    { run = '${EDITOR} "%s"', desc = "Edit", block = true, for = "unix" },
+    { run = '${EDITOR:-nvim} "%s"', desc = "Edit", block = true, for = "unix" },
 ]
 
 [open]
 rules = [
+    # Directories: navigate normally
     { url = "*/", use = [ "edit", "open" ] },
-    # Match hidden dotfiles (e.g. .config, .zshrc, .env)
+
+    # Hidden files and common configuration files
     { url = ".*", use = [ "edit", "reveal" ] },
-    # Match common extensionless or special config files
     { url = "config", use = [ "edit", "reveal" ] },
-    { url = "*.jsonc", use = [ "edit", "reveal" ] },
     { url = ".env*", use = [ "edit", "reveal" ] },
+
+    # Keep editor-friendly file types explicit
+    { url = "*.json", use = [ "edit", "reveal" ] },
+    { url = "*.jsonc", use = [ "edit", "reveal" ] },
     { url = "*.lock", use = [ "edit", "reveal" ] },
     { url = "*.lockb", use = [ "edit", "reveal" ] },
-    { mime = "text/*", use = [ "edit", "reveal" ] },
-    { mime = "*", use = [ "open", "reveal" ] },
+
+    # Media: use macOS's default application
+    { mime = "image/*", use = [ "open", "reveal" ] },
+    { mime = "video/*", use = [ "open", "reveal" ] },
+    { mime = "audio/*", use = [ "open", "reveal" ] },
+
+    # PDFs are usually better in a document viewer
+    { mime = "application/pdf", use = [ "open", "reveal" ] },
+
+    # Everything else: Neovim
+    { url = "*", use = [ "edit", "reveal" ] },
 ]
 
 [preview]
