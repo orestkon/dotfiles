@@ -9,6 +9,10 @@ edit = [
 [open]
 rules = [
     { url = "*/", use = [ "edit", "open" ] },
+    { url = "*.jsonc", use = [ "edit", "reveal" ] },
+    { url = ".env*", use = [ "edit", "reveal" ] },
+    { url = "*.lock", use = [ "edit", "reveal" ] },
+    { url = "*.lockb", use = [ "edit", "reveal" ] },
     { mime = "text/*", use = [ "edit", "reveal" ] },
     { mime = "*", use = [ "open", "reveal" ] },
 ]
