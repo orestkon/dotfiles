@@ -41,12 +41,7 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
 
-	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-	--    This is the easiest way to modularize your config.
-	--
-	--  Uncomment the following line and import kickstart basic plugins from `lua/plugins/*.lua`.
 	{ import = "plugins" },
-	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	{ import = "custom.plugins" },
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
