@@ -21,19 +21,10 @@ return {
 			"javascript",
 			"typescript",
 			"jsdoc",
+			"regex",
 		})
-
-		-- Enable Treesitter highlighting for supported filetypes.
-		-- 	vim.api.nvim_create_autocmd("FileType", {
-		-- 		callback = function(args)
-		-- 			-- Start only when a parser is available.
-		-- 			local language = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
-		--
-		-- 			if language then
-		-- 				vim.treesitter.start(args.buf, language)
-		-- 			end
-		-- 		end,
-		-- 	})
+		-- FIXME: Treesitter highlighting works without a custom FileType autocmd.
+		-- Identify what enables it during the later LSP/config audit.
 	end,
 
 	-- NOTE: Explore later: Treesitter can do more than syntax highlighting.
