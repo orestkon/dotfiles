@@ -14,6 +14,6 @@ return {
 		})
 	end,
 	keys = {
-		{ "<leader>nf", ":Neogen<CR>", desc = "Generate TSDoc" },
+		{ "<leader>cd", ":Neogen<CR>", desc = "[C]ode [D]ocumentation - TSDocs" },
 	},
 }
