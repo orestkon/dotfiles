@@ -43,10 +43,25 @@ return {
 			},
 		},
 
+		sort = { "manual" },
+
+		win = {
+			border = "rounded",
+			padding = { 1, 2 },
+			title = true,
+			title_pos = "center",
+		},
+
+		layout = {
+			preset = "modern",
+		},
+
 		-- Document existing key chains
 		spec = {
 			{ "<leader>s", group = "[S]earch" },
+			{ "<leader>f", group = "[F]iles" },
 			{ "<leader>t", group = "[T]oggle" },
+			{ "<leader>d", group = "[D]ebug" },
 			{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 		},
 	},
