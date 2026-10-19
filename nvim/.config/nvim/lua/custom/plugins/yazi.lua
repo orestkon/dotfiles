@@ -19,7 +19,6 @@ return {
 		},
 	},
 	opts = {
-		-- if you want to open yazi instead of netrw
 		open_for_directories = true,
 		floating_window_override_conf = {
 			border = "rounded", -- Makes it look much cleaner
