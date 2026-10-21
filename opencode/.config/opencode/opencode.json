@@ -1,36 +1,64 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "ollama/big-pickle",
-  "small_model": "ollama/big-pickle",
-  "agent": {
-    "plan": {
-"model": "ollama/big-pickle"
-      },
-      "build": {
-        "model": "ollama/big-pickle"
-    }
-  },
-  "provider": {
-    "google": {
-      "options": {
-        "apiKey": "{file:~/.gemini_key}"
-      }
-    },
-    "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "baseURL": "http://localhost:11434/v1"
-      },
-      "models": {
-        "qwen2.5-coder:14b-16k": {},
-        "qwen2.5-coder:14b": {}
-      }
-    }
-  },
+  "model": "opencode/deepseek-v4.1-flash-free",
   "permission": {
     "edit": "ask",
-    "bash": "ask",
-    "read": "allow",
-    "glob": "allow"
+    "bash": {
+      "*": "ask",
+
+      "pwd": "allow",
+      "ls": "allow",
+      "ls *": "allow",
+      "echo *": "allow",
+      "cat *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "grep *": "allow",
+      "rg *": "allow",
+      "jq *": "allow",
+      "stat *": "allow",
+      "du *": "allow",
+      "df *": "allow",
+      "ps *": "allow",
+      "which *": "allow",
+
+      "git status": "allow",
+      "git status *": "allow",
+      "git diff": "allow",
+      "git diff *": "allow",
+      "git log": "allow",
+      "git log *": "allow",
+      "git show *": "allow",
+      "git rev-parse *": "allow",
+      "git ls-files *": "allow",
+      "git branch": "allow",
+      "git branch -a": "allow",
+
+      "brew list *": "allow",
+      "brew info *": "allow",
+
+      "*$(*": "ask",
+      "*`*": "ask",
+      "*<(*": "ask",
+      "*>(*": "ask",
+      "*>*": "ask",
+      "*--output*": "ask",
+      "*--ext-diff*": "ask",
+      "*--textconv*": "ask",
+      "*--pre *": "ask",
+      "*--pre=*": "ask",
+      "*--pre-glob*": "ask",
+      "sudo *": "ask",
+      "* /*": "ask",
+      "* ../*": "ask",
+      "* ~/*": "ask",
+      "* $HOME/*": "ask",
+      "*.env*": "ask",
+      "*id_rsa*": "ask",
+      "*id_ed25519*": "ask",
+      "*.pem*": "ask",
+      "*.key*": "ask",
+      "*.p12*": "ask"
+    }
   }
 }
