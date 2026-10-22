@@ -1,5 +1,8 @@
 Brewfile
 README.md
+AGENTS.md
+install.sh
 docs
 backups
+scripts
 unused-configs

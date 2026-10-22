@@ -27,11 +27,13 @@ $ git clone git@github.com/orestkon/dotfiles.git
 $ cd dotfiles
 ```
 
-then use GNU stow to create symlinks
+then use GNU stow to create symlinks for the config packages
 
 ```
-$ stow */ 
+$ stow fastfetch ghostty nvim ohmyposh opencode tmux yazi zsh
 ```
+
+The `scripts/` directory contains setup helpers and is not stowed.
 
 ## More information
 
