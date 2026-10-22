@@ -36,5 +36,4 @@ alias lt3='eza -a --tree --level=3 --icons=always'
 # ==============================================================================
 # AI AGENTS & CLI TOOLS
 # ==============================================================================
-alias opencode='opencode --agent=plan --continue'
 alias cat='bat'

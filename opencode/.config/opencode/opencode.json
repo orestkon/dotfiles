@@ -1,64 +1,78 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "opencode/deepseek-v4.1-flash-free",
-  "permission": {
-    "edit": "ask",
-    "bash": {
-      "*": "ask",
-
-      "pwd": "allow",
-      "ls": "allow",
-      "ls *": "allow",
-      "echo *": "allow",
-      "cat *": "allow",
-      "head *": "allow",
-      "tail *": "allow",
-      "grep *": "allow",
-      "rg *": "allow",
-      "jq *": "allow",
-      "stat *": "allow",
-      "du *": "allow",
-      "df *": "allow",
-      "ps *": "allow",
-      "which *": "allow",
-
-      "git status": "allow",
-      "git status *": "allow",
-      "git diff": "allow",
-      "git diff *": "allow",
-      "git log": "allow",
-      "git log *": "allow",
-      "git show *": "allow",
-      "git rev-parse *": "allow",
-      "git ls-files *": "allow",
-      "git branch": "allow",
-      "git branch -a": "allow",
-
-      "brew list *": "allow",
-      "brew info *": "allow",
-
-      "*$(*": "ask",
-      "*`*": "ask",
-      "*<(*": "ask",
-      "*>(*": "ask",
-      "*>*": "ask",
-      "*--output*": "ask",
-      "*--ext-diff*": "ask",
-      "*--textconv*": "ask",
-      "*--pre *": "ask",
-      "*--pre=*": "ask",
-      "*--pre-glob*": "ask",
-      "sudo *": "ask",
-      "* /*": "ask",
-      "* ../*": "ask",
-      "* ~/*": "ask",
-      "* $HOME/*": "ask",
-      "*.env*": "ask",
-      "*id_rsa*": "ask",
-      "*id_ed25519*": "ask",
-      "*.pem*": "ask",
-      "*.key*": "ask",
-      "*.p12*": "ask"
+  "model": "deepseek/deepseek-flash",
+  "default_agent": "plan",
+  "providers": {
+    "deepseek": {
+      "settings": {
+        "apiKey": "{file:~/.secrets/deepseek-key-opencode}"
+      }
     }
-  }
+  },
+  "permissions": [
+    { "action": "read", "resource": "~/.secrets/*", "effect": "deny" },
+    { "action": "read", "resource": "*/.ssh/*", "effect": "deny" },
+    { "action": "read", "resource": "*id_rsa*", "effect": "deny" },
+    { "action": "read", "resource": "*id_ed25519*", "effect": "deny" },
+    { "action": "read", "resource": "*.pem", "effect": "deny" },
+    { "action": "read", "resource": "*.p12", "effect": "deny" },
+
+    { "action": "external_directory", "resource": "*", "effect": "deny" },
+    { "action": "external_directory", "resource": "~/.opencode/plan/*", "effect": "allow" },
+
+    { "action": "edit", "resource": "*", "effect": "ask" },
+
+    { "action": "shell", "resource": "*", "effect": "ask" },
+    { "action": "shell", "resource": "pwd", "effect": "allow" },
+    { "action": "shell", "resource": "ls", "effect": "allow" },
+    { "action": "shell", "resource": "ls *", "effect": "allow" },
+    { "action": "shell", "resource": "echo *", "effect": "allow" },
+    { "action": "shell", "resource": "cat *", "effect": "allow" },
+    { "action": "shell", "resource": "head *", "effect": "allow" },
+    { "action": "shell", "resource": "tail *", "effect": "allow" },
+    { "action": "shell", "resource": "grep *", "effect": "allow" },
+    { "action": "shell", "resource": "rg *", "effect": "allow" },
+    { "action": "shell", "resource": "jq *", "effect": "allow" },
+    { "action": "shell", "resource": "stat *", "effect": "allow" },
+    { "action": "shell", "resource": "du *", "effect": "allow" },
+    { "action": "shell", "resource": "df *", "effect": "allow" },
+    { "action": "shell", "resource": "ps *", "effect": "allow" },
+    { "action": "shell", "resource": "which *", "effect": "allow" },
+
+    { "action": "shell", "resource": "git status *", "effect": "allow" },
+    { "action": "shell", "resource": "git diff *", "effect": "allow" },
+    { "action": "shell", "resource": "git log *", "effect": "allow" },
+    { "action": "shell", "resource": "git show *", "effect": "allow" },
+    { "action": "shell", "resource": "git rev-parse *", "effect": "allow" },
+    { "action": "shell", "resource": "git ls-files *", "effect": "allow" },
+    { "action": "shell", "resource": "git branch *", "effect": "allow" },
+
+    { "action": "shell", "resource": "brew list *", "effect": "allow" },
+    { "action": "shell", "resource": "brew info *", "effect": "allow" },
+
+    { "action": "shell", "resource": "*$(*", "effect": "ask" },
+    { "action": "shell", "resource": "*`*", "effect": "ask" },
+    { "action": "shell", "resource": "*<(*", "effect": "ask" },
+    { "action": "shell", "resource": "*>(*", "effect": "ask" },
+    { "action": "shell", "resource": "*>*", "effect": "ask" },
+    { "action": "shell", "resource": "*--output*", "effect": "ask" },
+    { "action": "shell", "resource": "*--ext-diff*", "effect": "ask" },
+    { "action": "shell", "resource": "*--textconv*", "effect": "ask" },
+    { "action": "shell", "resource": "*--pre *", "effect": "ask" },
+    { "action": "shell", "resource": "*--pre=*", "effect": "ask" },
+    { "action": "shell", "resource": "*--pre-glob*", "effect": "ask" },
+    { "action": "shell", "resource": "* /*", "effect": "ask" },
+    { "action": "shell", "resource": "* ../*", "effect": "ask" },
+    { "action": "shell", "resource": "* ~/*", "effect": "ask" },
+    { "action": "shell", "resource": "* $HOME/*", "effect": "ask" },
+    { "action": "shell", "resource": "*.env*", "effect": "ask" },
+    { "action": "shell", "resource": "*id_rsa*", "effect": "ask" },
+    { "action": "shell", "resource": "*id_ed25519*", "effect": "ask" },
+    { "action": "shell", "resource": "*.pem*", "effect": "ask" },
+    { "action": "shell", "resource": "*.p12*", "effect": "ask" },
+
+    { "action": "shell", "resource": "*~/.secrets*", "effect": "deny" },
+    { "action": "shell", "resource": "git push *", "effect": "deny" },
+    { "action": "shell", "resource": "sudo *", "effect": "deny" }
+  ]
 }
