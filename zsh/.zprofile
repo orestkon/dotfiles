@@ -1,11 +1,10 @@
 # ==============================================================================
-# HOMEBREW & SYSTEM PATHS
+# HOMEBREW
 # ==============================================================================
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# MacPorts Fallback
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-export MANPATH="/opt/local/share/man:$MANPATH"
+# Apple Silicon only; Linux/WSL use their native package managers.
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 
 # ==============================================================================
@@ -14,11 +13,9 @@ export MANPATH="/opt/local/share/man:$MANPATH"
 # Prevent duplicate entries in PATH
 typeset -U path
 
-export BUN_INSTALL="$HOME/.bun"
 export NVM_DIR="$HOME/.nvm"
 
 path=(
-  "$BUN_INSTALL/bin"
   "$HOME/bin"
   $path
 )

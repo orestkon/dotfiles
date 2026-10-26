@@ -11,4 +11,7 @@ if [ -d "$ZSH_CONFIG_DIR" ]; then
   done
 fi
 
-fastfetch --logo-type kitty
+# System info in the first shell only
+if [[ -z $TMUX && $SHLVL -eq 1 ]]; then
+  fastfetch --logo-type kitty
+fi
