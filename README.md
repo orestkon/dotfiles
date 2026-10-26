@@ -239,4 +239,3 @@ MIT — see [LICENSE](LICENSE).
 - [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) — starting point
   for the Neovim configuration.
 - [Catppuccin](https://github.com/catppuccin) — colorschemes across the setup.
-- [TPM](https://github.com/tmux-plugins/tpm) — tmux plugins.
