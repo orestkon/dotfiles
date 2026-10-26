@@ -15,8 +15,6 @@
         "memory",
         "disk",
         "battery",
-        "publicip",
-        "localip",
         "break",
         "colors"
     ]
