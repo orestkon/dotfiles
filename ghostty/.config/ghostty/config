@@ -1,5 +1,9 @@
 theme = Catppuccin Macchiato
+
+# --- Fonts ---
+font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 16
+
 window-decoration = false
 maximize = true
 mouse-hide-while-typing = true
