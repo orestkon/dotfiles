@@ -66,6 +66,8 @@ echo "🔗 Starting Smart Stow..."
 cd "$DOTFILES_DIR"
 
 INTERNAL_IGNORE=(".git" ".stow-ignore" ".." ".")
+# Packages whose config directories hold runtime state; keep them unfolded.
+NO_FOLDING=("opencode")
 USER_IGNORES=()
 if [ -f ".stow-ignore" ]; then
   while IFS= read -r line || [[ -n "$line" ]]; do
@@ -93,8 +95,13 @@ for dir in */; do
   done
 
   if [ "$should_ignore" = false ]; then
+    stow_options=()
+    for pkg in "${NO_FOLDING[@]}"; do
+      [[ "$target" == "$pkg" ]] && stow_options+=(--no-folding)
+    done
+
     echo "📦 Stowing: $target"
-    stow "$target"
+    stow "${stow_options[@]}" "$target"
   else
     echo "⏭️  Skipping: $target"
   fi
