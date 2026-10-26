@@ -14,4 +14,5 @@ fi
 # System info in the first shell only
 if [[ -z $TMUX && $SHLVL -eq 1 ]]; then
   fastfetch --logo-type kitty
+  print
 fi
