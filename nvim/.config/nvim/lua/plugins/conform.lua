@@ -31,11 +31,13 @@ return {
     end,
     formatters_by_ft = {
       lua = { "stylua" },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
-      -- You can use 'stop_after_first' to run the first available formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      python = { "ruff_format" },
+      rust = { "rustfmt" },
+      json = { "prettier_json" },
+      jsonc = { "prettier_json" },
+      yaml = { "prettier" },
+      toml = { "taplo" },
+      sh = { "shfmt" },
       typescript = { "prettier" },
       javascript = { "prettier" },
       typescriptreact = { "prettier" },
@@ -44,6 +46,11 @@ return {
     formatters = {
       prettier = {
         prepend_args = { "--no-semi", "--single-quote", "--trailing-comma", "all", "--print-width", "120" },
+      },
+      -- JSON and JSONC must never get trailing commas.
+      prettier_json = {
+        inherit = "prettier",
+        prepend_args = { "--trailing-comma", "none" },
       },
     },
   },

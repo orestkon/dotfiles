@@ -208,6 +208,10 @@ return {
         "lua_ls",
         "ts_ls",
         "stylua",
+        "prettier",
+        "ruff",
+        "taplo",
+        "shfmt",
       },
     })
 
