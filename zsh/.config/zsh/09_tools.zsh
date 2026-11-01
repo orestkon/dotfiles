@@ -6,6 +6,3 @@
 
 # Initialize Zoxide smarter cd replacement
 eval "$(zoxide init --cmd cd zsh)"
-
-# Initialize 'thefuck' command correction alias
-eval $(thefuck --alias)
