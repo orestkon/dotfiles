@@ -113,9 +113,10 @@ No automated tests. Validate what you changed and report what you ran:
   `fastfetch/.config/fastfetch/config.jsonc`)
 - Shell: `bash -n scripts/*.sh` and
   `zsh -n zsh/.zshrc zsh/.zshenv zsh/.zprofile zsh/.config/zsh/*.zsh`
-- Lua: `luac -p <changed-file>`
-- TOML: `python3 -c 'import tomllib,sys; tomllib.load(open(sys.argv[1],"rb"))' <file>`
-  (Python 3.11+; on this machine use `python3.14`)
+- Lua: `nvim --headless --clean -c 'lua local f,e=loadfile(vim.fn.argv(0)); assert(f,e)' -c 'qa!' -- <file>`
+- TOML: `taplo check <file>` (Mason manages `taplo`; if it is not on `PATH`,
+  use `"$HOME/.local/share/nvim/mason/bin/taplo" check <file>`). If `taplo`
+  is not installed yet, say the check was skipped.
 - Whitespace: `git diff --check`
 - OpenCode: `opencode debug config` after changing `opencode.json`
 - Do not run `install.sh`, restart shells, reload tmux/nvim, or change system
