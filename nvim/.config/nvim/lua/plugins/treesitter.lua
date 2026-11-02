@@ -22,6 +22,8 @@ return {
       "typescript",
       "jsdoc",
       "regex",
+      "python",
+      "rust",
     })
     -- FIXME: Treesitter highlighting works without a custom FileType autocmd.
     -- Identify what enables it during the later LSP/config audit.

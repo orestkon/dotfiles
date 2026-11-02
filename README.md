@@ -151,7 +151,8 @@ nvim
 ```
 
 Then check the setup with `:checkhealth`. Mason installs `lua_ls`, `ts_ls`,
-`stylua`, `prettier`, `ruff`, `taplo`, and `shfmt`.
+`rust-analyzer`, `pyright`, `stylua`, `prettier`, `ruff`, `taplo`, and
+`shfmt`.
 
 **Yazi** — install the pinned flavor:
 

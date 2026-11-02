@@ -198,6 +198,14 @@ return {
       },
     })
 
+    vim.lsp.config("rust_analyzer", {
+      capabilities = capabilities,
+    })
+
+    vim.lsp.config("pyright", {
+      capabilities = capabilities,
+    })
+
     -- ==============================================================================
     -- 5. Tool installation and server activation
     -- ==============================================================================
@@ -207,6 +215,8 @@ return {
       ensure_installed = {
         "lua_ls",
         "ts_ls",
+        "rust-analyzer",
+        "pyright",
         "stylua",
         "prettier",
         "ruff",
@@ -220,6 +230,6 @@ return {
     --    :Mason
 
     -- Enable the configured language servers.
-    vim.lsp.enable({ "lua_ls", "ts_ls" })
+    vim.lsp.enable({ "lua_ls", "ts_ls", "rust_analyzer", "pyright" })
   end,
 }
