@@ -1,0 +1,25 @@
+[include]
+  path = ~/.secrets/gitconfig
+  path = ~/dotfiles/git/delta/catppuccin.gitconfig
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+
+[init]
+	defaultBranch = main
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+    features = catppuccin-macchiato
+    side-by-side = true
+    line-numbers = true
+    navigate = true
+    true-color = always
