@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+# 1. Use the current folder name as the session name (cleaned of dots)
+SESSION_NAME=$(basename "$PWD" | tr '.' '-')
+
+# 2. Check if the session already exists
+tmux has-session -t "$SESSION_NAME" 2>/dev/null
+
+if [ $? != 0 ]; then
+  # Create a new session, detached (-d), named after the folder
+  # Create the first window named "NeoVim"
+  tmux new-session -d -s "$SESSION_NAME" -n "NeoVim"
+  
+  # Run nvim in the first window
+  tmux send-keys -t "$SESSION_NAME:NeoVim" "nvim ." C-m
+
+  # Create the second window named "OpenCode"
+  tmux new-window -t "$SESSION_NAME" -n "OpenCode"
+  
+  # Run opencode in the second window
+  tmux send-keys -t "$SESSION_NAME:OpenCode" "opencode ." C-m
+
+  # Select the first window as default
+  tmux select-window -t "$SESSION_NAME:NeoVim"
+fi
+
+# 3. Attach to the session
+tmux attach-session -t "$SESSION_NAME"

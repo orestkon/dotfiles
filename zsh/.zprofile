@@ -16,6 +16,6 @@ typeset -U path
 export NVM_DIR="$HOME/.nvm"
 
 path=(
-  "$HOME/bin"
+  "$HOME/.local/bin"
   $path
 )
