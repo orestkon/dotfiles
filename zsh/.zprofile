@@ -14,8 +14,11 @@ fi
 typeset -U path
 
 export NVM_DIR="$HOME/.nvm"
+export BUN_INSTALL="$HOME/.bun"
 
 path=(
+  "$BUN_INSTALL/bin"
+  "$HOME/.cargo/bin"
   "$HOME/.local/bin"
   $path
 )
