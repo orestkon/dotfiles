@@ -25,8 +25,15 @@ return {
       "python",
       "rust",
     })
-    -- FIXME: Treesitter highlighting works without a custom FileType autocmd.
-    -- Identify what enables it during the later LSP/config audit.
+    -- Neovim core only starts Tree-sitter highlighting for a handful of
+    -- filetypes (lua, markdown, help, query) via its ftplugins. Start it for
+    -- every filetype with a parser so highlighting and plugins that walk the
+    -- syntax tree (rainbow delimiters) work consistently.
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(event)
+        pcall(vim.treesitter.start, event.buf)
+      end,
+    })
   end,
 
   -- NOTE: Explore later: Treesitter can do more than syntax highlighting.
