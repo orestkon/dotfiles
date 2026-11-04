@@ -20,6 +20,8 @@
 
     { "action": "external_directory", "resource": "*", "effect": "deny" },
     { "action": "external_directory", "resource": "~/.opencode/plan/*", "effect": "allow" },
+    { "action": "external_directory", "resource": "~/Documents/Obsidian Vault/*", "effect": "allow" },
+    { "action": "read", "resource": "~/Documents/Obsidian Vault/*", "effect": "allow" },
 
     { "action": "edit", "resource": "*", "effect": "allow" },
     { "action": "edit", "resource": ".git/*", "effect": "deny" },
@@ -31,6 +33,7 @@
     { "action": "edit", "resource": "*.key", "effect": "deny" },
     { "action": "edit", "resource": "*id_rsa*", "effect": "deny" },
     { "action": "edit", "resource": "*id_ed25519*", "effect": "deny" },
+    { "action": "edit", "resource": "~/Documents/Obsidian Vault/*", "effect": "deny" },
 
     { "action": "shell", "resource": "*", "effect": "allow" },
 

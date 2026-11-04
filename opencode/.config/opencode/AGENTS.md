@@ -17,8 +17,9 @@ These are my default expectations for every project. Project-level
 ## Boundaries
 
 - Never push to any remote. If a push is needed, ask me to run it.
-- Never modify files outside the current repository. OpenCode plan files under
-  `~/.opencode/plan` are the only exception, and only when explicitly asked.
+- Never modify files outside the current repository. `~/.opencode/plan` is the
+  only exception for writes, and only when explicitly asked.
+  `~/Documents/Obsidian Vault/` is readable for reference but never editable.
 - Do not use `sudo`, install system packages, or change shell, PATH, or system
   settings unless I explicitly ask.
 - Never print, copy, commit, or expose secrets. Use `{file:...}` or

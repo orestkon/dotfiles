@@ -47,7 +47,9 @@ Each top-level directory is a GNU Stow package that mirrors `$HOME`:
   write into `$HOME` and can overwrite real files. A dry run (`stow -n <pkg>`)
   is fine.
 - Work only inside this repository. The global OpenCode config denies access to
-  external directories; do not try to work around it.
+  external directories; do not try to work around it. The one exception is
+  `~/Documents/Obsidian Vault/`, which is readable for reference but never
+  editable.
 - Never commit secrets: API keys, tokens, private keys, or `.env` contents. Use
   `{file:~/...}` or `{env:...}` references; real secrets live in `~/.secrets`.
 - Never modify vendored code: `nvim/.config/nvim/lua/kickstart/`,
