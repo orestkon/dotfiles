@@ -23,7 +23,7 @@ Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim). The foll
 - [blink.cmp](https://github.com/Saghen/blink.cmp) — completion.
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip) — snippet engine and snippet support.
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs) — automatic pairing of brackets and quotes.
-- [mini.nvim](https://github.com/echasnovski/mini.nvim) — text objects, surrounding operations, and statusline.
+- [mini.nvim](https://github.com/echasnovski/mini.nvim) — text objects and surrounding operations.
 - [guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) — automatic indentation detection.
 
 ### Language support
@@ -45,6 +45,7 @@ Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim). The foll
 ### Interface
 
 - [Catppuccin](https://github.com/catppuccin/nvim) — Macchiato colorscheme.
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) — statusline with a rounded "bubbles" look.
 - [noice.nvim](https://github.com/folke/noice.nvim) — command-line, messages, and popup-menu UI.
 
 ### Writing and documentation
