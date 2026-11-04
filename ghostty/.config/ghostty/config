@@ -17,7 +17,7 @@ macos-titlebar-style = "hidden"
 # Set between 0.0 (clear) and 1.0 (opaque)
 background-opacity = "0.80"
 # Adds a macOS-style frosted glass effect (0-100)
-background-blur-radius = "20"
+background-blur = "20"
 
 # --- Window Spacing ---
 # Adds breathing room so text doesn't touch the window edges
