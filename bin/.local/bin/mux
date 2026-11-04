@@ -8,20 +8,21 @@ tmux has-session -t "$SESSION_NAME" 2>/dev/null
 
 if [ $? != 0 ]; then
   # Create a new session, detached (-d), named after the folder
-  # Create the first window named "NeoVim"
-  tmux new-session -d -s "$SESSION_NAME" -n "NeoVim"
-  
-  # Run nvim in the first window
-  tmux send-keys -t "$SESSION_NAME:NeoVim" "nvim ." C-m
+  # Create the first window named "Editor"
+  tmux new-session -d -s "$SESSION_NAME" -n "Editor" -c "$PWD"
 
-  # Create the second window named "OpenCode"
-  tmux new-window -t "$SESSION_NAME" -n "OpenCode"
-  
-  # Run opencode in the second window
-  tmux send-keys -t "$SESSION_NAME:OpenCode" "opencode ." C-m
+  # Run nvim in the left pane
+  tmux send-keys -t "$SESSION_NAME:Editor" "nvim ." C-m
+
+  # Split right and run opencode in the new pane (which keeps focus)
+  tmux split-window -h -t "$SESSION_NAME:Editor" -c "$PWD"
+  tmux send-keys -t "$SESSION_NAME:Editor" "opencode ." C-m
+
+  # Create the second window named "Console" (plain shell)
+  tmux new-window -t "$SESSION_NAME" -n "Console"
 
   # Select the first window as default
-  tmux select-window -t "$SESSION_NAME:NeoVim"
+  tmux select-window -t "$SESSION_NAME:Editor"
 fi
 
 # 3. Attach to the session
