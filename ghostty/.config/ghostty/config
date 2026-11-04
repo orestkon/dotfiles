@@ -37,4 +37,11 @@ quit-after-last-window-closed = false
 # custom-shader = shaders/matrix-hallway.glsl
 # custom-shader-animation = true
 
+# --- Cursor trail ---
+# Neovide-style cursor smear; the trail uses the cursor color below.
+cursor-color = "#c6a0f6"
+custom-shader = shaders/cursor-warp.glsl
+# Add this if the trail freezes when the window loses focus:
+# custom-shader-animation = always
+
 command = /bin/zsh
