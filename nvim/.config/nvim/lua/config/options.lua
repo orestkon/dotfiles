@@ -33,6 +33,11 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- Treat hyphens as part of a word (kebab-case, CLI flags, etc.)
+--  Affects word motions, text objects, `*`/`#`, and keyword completion.
+--  See `:help 'iskeyword'`
+vim.opt.iskeyword:append("-")
+
 -- Keep signcolumn on by default
 vim.o.signcolumn = "yes"
 
@@ -54,7 +59,7 @@ vim.o.splitbelow = true
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
-vim.o.list = false
+vim.o.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.opt.tabstop = 2 -- Number of spaces a <Tab> counts for
